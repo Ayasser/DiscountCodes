@@ -1,0 +1,75 @@
+swagger: "2.0"
+info:
+  description: "Basic Discount code service for generate and get discount codes"
+  version: "1.0.0"
+  title: "Billogram"
+
+
+tags:
+- name: "Discount Codes"
+
+paths:
+  "/discount-code/create":
+    post:
+      tags:
+      - "Discount Codes"
+      summary: "Genereate discount code for user"
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: user
+          description: The user to create.
+          schema:
+            $ref: '#/definitions/DiscountCode'
+      responses:
+        "200":
+          description: "Invalid input"
+          schema:
+            $ref: '#/definitions/DiscountCode'
+
+
+  discount-code/{id}:
+    get:
+      tags:
+      - "Discount Codes"
+      summary: "Find Discount code by id"
+      produces:
+      - "application/json"
+      parameters:
+        - in: path
+          name: id
+          type: string
+          required: true
+          description: uuid of.
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+              $ref: '#/definitions/DiscountCode'
+
+
+
+definitions:
+  DiscountCode:
+    type: "object"
+    properties:
+      created_by:
+        type: "string"
+      modified_by:
+        type: "string"
+      code:
+        type: "string"
+      start_date:
+        type: "string"
+      expire_date:
+        type: "string"
+      customer_id:
+        type: "string"
+      limited_usage_count:
+        type: "integer"
+      usage_count:
+        type: "integer"
+      active:
+        type: "boolean"
+
