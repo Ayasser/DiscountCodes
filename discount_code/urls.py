@@ -9,5 +9,4 @@ urlpatterns = [
     url('', include(router.urls)),
     url(r'^create', create_discount_code),
     path(r'<id>', get_discount_code),
-
 ]

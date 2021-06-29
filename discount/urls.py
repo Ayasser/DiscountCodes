@@ -18,9 +18,7 @@ from django.contrib import admin
 from django.urls import path
 
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'discount-code/', include(('discount_code.urls', 'discount_code'), namespace='discount_code')),
-
 ]
